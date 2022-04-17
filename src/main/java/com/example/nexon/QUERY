@@ -1,0 +1,22 @@
+SELECT sender, transactions, currencies
+FROM monitor as mo
+LEFT INNER JOIN
+
+SELECT mo.iban, count(tran.sender) as transactions
+FROM monitor as mo
+LEFT INNER JOIN transactions as tran mo.iban = tran.sender
+GROUP BY mo.iban
+
+
+SELECT tran.sender, count(tran.sender) as transactions, group_concat(cur.name)
+FROM monitor as mo
+LEFT JOIN transactions as tran on mo.iban = tran.sender
+LEFT JOIN currencies as cur on tran.currency_code = cur.code
+WHERE tran.completed = 'yes'
+GROUP BY tran.sender
+ORDER BY tran.sender asc
+
+SELECT tran.sender, tran.completed, tran.currency_code
+FROM monitor as mo
+LEFT JOIN transactions as tran on mo.iban = tran.sender
+WHERE tran.completed = 'yes'

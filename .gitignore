@@ -1,3 +1,35 @@
+HELP.md
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.log
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
 .idea
-/target
+*.iws
 *.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
+
+**/*.log
+/src/main/resources/event/classes/com/ese/msg/
+/src/main/resources/event/
+/src/main/resources/src/**
+/src/main/resources/log/**
+/src/main/resources/logs/**
