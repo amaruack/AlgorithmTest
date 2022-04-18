@@ -10,14 +10,28 @@ public class Powerset {
         boolean[] state = new boolean[arr.length];
 
         // 부분 집합 구하고
-        powerset(arr,state,0, arr.length);
+//        powerset(arr,state,0, arr.length);
 
         // 조건 체크 하고
 
         // 유일성 체크 하고
 
+        powerset2(arr);
 
+    }
 
+    public static void powerset2(String[] arr){
+
+        int max = 1 << arr.length;
+        for (int i = 0; i < max ; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if ( (i & 1 <<j) != 0 ){
+                    System.out.print(arr[j]);
+                    System.out.print(",");
+                }
+            }
+            System.out.println("");
+        }
     }
 
     public static void powerset(String[] arr, boolean[] state, int index, int length) {

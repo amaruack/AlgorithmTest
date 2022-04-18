@@ -1,6 +1,9 @@
 package com.example.programmers.exercise.dfs;
 
+import com.sun.jmx.remote.internal.ArrayQueue;
+
 import java.util.*;
+import java.util.concurrent.SynchronousQueue;
 
 public class TripPath {
 
@@ -78,39 +81,51 @@ public class TripPath {
         // 데이터 정렬을 먼져 해버리면 ?
         // map queue???
 
-        List<Path> tmp = new ArrayList<Path>();
+        List<String[]> ticketList = new ArrayList<String[]>();
 
         for (int i = 0; i < tickets.length ; i++) {
-            tmp.add(new Path(tickets[i][START], tickets[i][END]));
+            ticketList.add(tickets[i]);
         }
 
-        Collections.sort(tmp, (o1, o2) -> {
-            int result = o1.getStart().compareTo(o2.getStart());
+        Collections.sort(ticketList, (o1, o2) -> {
+            int result = o1[START].compareTo(o2[START]);
             if (result == 0) {
-                result = o1.getEnd().compareTo(o2.getEnd());
+                result = o1[END].compareTo(o2[END]);
             }
             return result;
         });
 
         List<String> path = new ArrayList<>();
-
+        boolean[] check = new boolean[ticketList.size()];
         path.add(START_CITY);
-        while (tmp.size() > 0) {
-//            int deleteIndex = 0;
-            for (int i = 0; i < tmp.size() ; i++) {
-                if (tmp.get(i).getStart().equals(path.get(path.size()-1))) {
-                    path.add(tmp.get(i).getEnd());
-//                    deleteIndex = i;
-                    break;
-                }
-            }
-//            tmp.remove(deleteIndex);
+
+        bfs(ticketList, check, path, 0);
+
+        if (paths.size() > 0) {
+            Optional<String> tmp = paths.stream().map(o -> String.join(",",o)).sorted().findFirst();
+            answer = tmp.get().split(",");
         }
-
-        answer = path.toArray(new String[]{});
-
         return answer;
     }
+
+    private static List<List<String>> paths = new ArrayList<>();
+
+    public void bfs(List<String[]> ticketList, boolean[] check, List<String> path, int index) {
+        for (int i = 0; i < ticketList.size() ; i++) {
+            if ( !check[i] && ticketList.get(i)[START].equals(path.get(index))) {
+                List<String> clonePath = new ArrayList<>(path);
+                boolean[] cloneCheck = Arrays.copyOf(check , check.length);
+
+                clonePath.add(index+1, ticketList.get(i)[END]);
+                cloneCheck[i] = true;
+                bfs(ticketList, cloneCheck, clonePath, index+1);
+            }
+        }
+        if (index == ticketList.size()) {
+            paths.add(path);
+        }
+    }
+
 
 
 
