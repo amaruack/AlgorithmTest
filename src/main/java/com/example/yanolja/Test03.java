@@ -11,6 +11,7 @@ public class Test03 {
 
         Test03 test = new Test03();
 //        int result = test.solution(new int[]{5,3,6,1,3},2);
+//        int result = test.solution(new int[]{2,1,1,1,1,1,1,3},2);
         int result = test.solution(new int[]{2,1,1,1,1,1,1,3},2);
         System.out.println(result);
     }
