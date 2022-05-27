@@ -1,11 +1,17 @@
 package com.example.yanolja;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class Test04 {
 
     public static void main(String[] args) {
+
+//        ConcurrentHashMap
+
+//        ConcurrentHashMap<String, Object> tmp = new ConcurrentHashMap<>();
+//        tmp.put()
 
         Test04 test = new Test04();
 //        int result = test.solution(new int[]{5,3,6,1,3},2);

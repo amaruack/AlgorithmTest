@@ -92,7 +92,6 @@ public class Test03 {
         return result;
     }
 
-
     public boolean oodFlag(int a){
         return a % 2 != 0 ? true : false;
     }

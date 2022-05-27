@@ -24,12 +24,14 @@ public class Test01 {
         Collections.sort(list, Collections.reverseOrder());
 
         // return string 생성
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < list.size() ; i++) {
-            sb.append(list.get(i));
-        }
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = 0; i < list.size() ; i++) {
+//            sb.append(list.get(i));
+//        }
+//        result = Integer.parseInt(sb.toString());
 
-        result = Integer.parseInt(sb.toString());
+        result = Integer.parseInt(String.join("",list));
+
         return result;
     }
 
