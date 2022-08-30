@@ -16,11 +16,8 @@ public class Solution {
 //        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
-
         int n = Integer.parseInt(firstMultipleInput[0]);
-
         int k = Integer.parseInt(firstMultipleInput[1]);
-
         List<Integer> s = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
             .map(Integer::parseInt)
             .collect(Collectors.toList());

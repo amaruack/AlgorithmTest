@@ -3,39 +3,32 @@ package com.example.test;
 public class Permutation {
 
     public static void main(String[] args) {
-        
-        int[] ar = new int[] {1,2,5};
-        boolean[] flag = new boolean[ar.length];
+        int[] arr = new int[] {2,4,5};
+        boolean[] flag = new boolean[arr.length];
+        int[] out = new int[arr.length];
 
-        int[] output = new int[ar.length];
-        for (int i = 0; i < ar.length ; i++) {
-            permutation(ar, flag, output,0, i+1);
+        for (int i = 0; i < arr.length ; i++) {
+            permutation(arr, flag, out, 0, i+1);
         }
-        
     }
-    
-    public static void permutation(int[] ar, boolean[] flag, int[] output, int depth, int length){
-        if (depth == length) {
-            print(output, depth);
+
+    public static void permutation(int[] arr, boolean[] flag, int[] out, int index, int n) {
+        if (index == n) {
+            for (int i = 0; i < n; i++) {
+                System.out.print(out[i]+ " ");
+            }
+            System.out.println(" ");
             return;
         }
 
-        for (int i = 0; i < ar.length; i++) {
+        for (int i = 0; i <  arr.length; i++) {
             if(!flag[i]) {
                 flag[i] = true;
-                output[depth] = ar[i];
-                permutation(ar, flag, output, depth+1, length);
+                out[index] = arr[i];
+                permutation(arr, flag, out, index+1, n);
                 flag[i] = false;
             }
         }
-
-    }
-
-    public static void print(int[] output, int length){
-        for (int i = 0; i < length; i++) {
-            System.out.print(output[i] + " ");
-        }
-        System.out.println();
     }
 
 }
