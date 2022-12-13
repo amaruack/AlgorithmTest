@@ -17,6 +17,8 @@ HELP.md
 *.iws
 *.iml
 *.ipr
+.idea/
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -25,11 +27,3 @@ HELP.md
 /nbdist/
 /.nb-gradle/
 /build/
-
-
-**/*.log
-/src/main/resources/event/classes/com/ese/msg/
-/src/main/resources/event/
-/src/main/resources/src/**
-/src/main/resources/log/**
-/src/main/resources/logs/**
